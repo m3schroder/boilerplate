@@ -1,0 +1,55 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+	html{
+		@apply bg-gray-50
+	}
+	strong{
+		@apply text-gray-600;
+	}
+	h1,h2,h3,h4,h5{
+		@apply text-gray-500;
+	}
+	p{
+		@apply font-light text-lg leading-9
+	}
+}
+@layer utilities {
+	.fakeclass{
+		@apply bg-orange-300 bg-yellow-300
+	}
+	.break-space{
+		@apply mb-5
+	}
+  .flex-center{
+     @apply flex justify-center items-center;
+  }
+  .text-color{
+     @apply text-neutral-600;
+  }
+  .header-pb{
+     @apply mb-5;
+  }
+}
+
+@layer components{
+	#drawer::after{
+		@apply bg-black  w-screen h-screen fixed top-0 left-0 z-[-1];
+	}
+	.card{
+		@apply  w-11/12 lg:!px-16 !px-6 !py-9 gap-4 lg:!max-w-3xl ;
+	}
+	.card-image{
+		@apply card !pt-0 !px-0 !pb-4 gap-4 lg:!bg-[#f9fafb] lg:!border-0 lg:!shadow-none;
+	}
+	.card-image img{
+		@apply lg:w-screen lg:rounded-lg;
+	}
+	.card h3{
+		@apply text-xl;
+	}
+}

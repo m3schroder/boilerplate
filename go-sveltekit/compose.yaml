@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  # app:
+  #   container_name: app
+  #   build: ./app
+  #   env_file:
+  #     - ./app/.env
+  #   ports:
+  #     - 3000:3000
+  # backend:
+  #   container_name: backend
+  #   build: ./backend
+  #   env_file: 
+  #     - ./.env
+  #   volumes:
+  #     - .:/opt/app/backend 
+  #   ports:
+  #     - 8080:8080
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=test
+      - POSTGRES_DB=test
+  neo4j:
+    image: bitnami/neo4j:latest
+    networks:
+      - neo4j-network
+    ports:
+      - '7474:7474'
+      - '7473:7473'
+      - '7687:7687'
+
+networks:
+  neo4j-network:
+    driver: bridge
+
+  
